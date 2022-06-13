@@ -1,0 +1,15 @@
+name: molview
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.4
+  - numpy
+  - matplotlib
+  - rdkit
+  - pandas
+  - numpy
+  - plotly
+  - pip:
+    - dash
+    - dash_html_components
