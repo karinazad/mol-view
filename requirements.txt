@@ -1,0 +1,6 @@
+dash
+dash_html_components
+numpy
+pandas
+plotly
+rdkit
