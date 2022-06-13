@@ -1,16 +1,15 @@
 """
 Adapted from: https://github.com/PatWalters/interactive_plots
 """
-
+import base64
+from io import BytesIO
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 from dash.dependencies import Input, Output
-from rdkit import Chem
-from rdkit.Chem.Draw import MolsToGridImage
-import base64
-from io import BytesIO
+# from rdkit import Chem
+# from rdkit.Chem.Draw import MolsToGridImage
 
 from mol_view import get_radius_size, process_data
 
@@ -94,13 +93,13 @@ def display_selected_data(selectedData):
         source_list = list(match_df.type)
         compound_type_list = list(match_df["Compound Annotation"])
 
-        mol_list = [Chem.MolFromSmiles(x) for x in smiles_list]
-        name_list = [f"Exp. pKa={pka} | {type} " for (pka, source, type, smi) in
-                     zip(pka_list, source_list, compound_type_list, smiles_list)]
-
-        img = MolsToGridImage(mol_list[0:max_structs], molsPerRow=structs_per_row, legends=name_list)
+        # mol_list = [Chem.MolFromSmiles(x) for x in smiles_list]
+        # name_list = [f"Exp. pKa={pka} | {type} " for (pka, source, type, smi) in
+        #              zip(pka_list, source_list, compound_type_list, smiles_list)]
+        #
+        # img = MolsToGridImage(mol_list[0:max_structs], molsPerRow=structs_per_row, legends=name_list)
         buffered = BytesIO()
-        img.save(buffered, format="JPEG")
+        # img.save(buffered, format="JPEG")
         encoded_image = base64.b64encode(buffered.getvalue())
         src_str = 'data:image/png;base64,{}'.format(encoded_image.decode())
     else:

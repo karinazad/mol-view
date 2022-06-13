@@ -1,4 +1,0 @@
-numpy
-rdkit
-pandas
-plotly
